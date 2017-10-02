@@ -1,0 +1,46 @@
+name:                dirconduit-unix
+version:             0.1.0.0
+synopsis:            Source directory content on unix
+description:
+    `dirconduit-unix` provides a `Source` to deeply traverse a directory and
+    categorize its content as either regular files, directories and symbolic
+    links.
+homepage:            https://github.com/mat8913/dirconduit-unix#readme
+license:             GPL-3
+license-file:        LICENSE
+author:              Matthew Harm Bekkema
+maintainer:          mbekkema97@gmail.com
+copyright:           2017 Matthew Harm Bekkema
+category:            System, Conduit
+build-type:          Simple
+extra-source-files:  README.md
+                   , ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      lib
+  exposed-modules:     System.Posix.ByteString.DirConduit
+  other-modules:       Internal.Exception
+                       Internal.RawFilePath
+  ghc-options:         -Wall
+  build-depends:       base >= 4.7 && < 5
+                     , bytestring
+                     , unix
+                     , resourcet
+                     , conduit
+  default-language:    Haskell2010
+
+executable deep-show-dir
+  hs-source-dirs:      deep-show-dir
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , dirconduit-unix
+                     , bytestring
+                     , unix
+                     , conduit
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/mat8913/dirconduit-unix
